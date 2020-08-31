@@ -1,18 +1,24 @@
 package com.example.roomadvancewithserverclient;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.media.JetPlayer;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.Layer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHolder>{
 
@@ -33,7 +39,7 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         TextView tv_rolN0=holder.tv_rolN0;
         TextView tv_name=holder.tv_name;
         TextView tv_contactNo=holder.tv_contactNo;
@@ -51,6 +57,31 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHol
         }else if (dataset.get(position).gender.equals("FeMale"))
         {
             genderImage.setImageResource(R.drawable.female);
+        }
+        ////==============logic for title==============///
+        title_btn.setText(dataset.get(position).student_name.toUpperCase().charAt(0)+"");
+        //random color logic
+        Random random=new Random();
+        int red=random.nextInt(255);
+        int green=random.nextInt(255);
+        int blue=random.nextInt(255);
+
+        title_btn.setBackgroundColor(Color.rgb(red,green,blue));
+
+        ////==============logic for title==============///
+
+        ///========set logic for when click on call icon got to phone call=======================///////////////////////
+        if (dataset.get(position).contanctno.length()>10){
+            callImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+dataset.get(position).contanctno));
+                    context.startActivity(intent);
+                }
+            });
+        }else
+        {
+            Toast.makeText(context, "Number is invalide", Toast.LENGTH_SHORT).show();
         }
 
     }
