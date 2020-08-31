@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.List;
+
 public class StudentRepository {
     private String DB_NAME="student_db";
     StudentDatabase studentDatabase;
@@ -40,4 +42,14 @@ public class StudentRepository {
     }
 
     //================InsertTask end====================//
+    
+
+    // ================Get Data Task start====================//
+
+    public List<Student> getStudents(){
+        List<Student>studentList=studentDatabase.studentDAO().getAll();
+        return studentList;
+    }
+
+    //================Get Data Task end====================//
 }
