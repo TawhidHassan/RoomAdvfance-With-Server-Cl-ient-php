@@ -122,7 +122,12 @@ public class ViewActivity extends AppCompatActivity {
         customAdapter.notifyDataSetChanged();
     }
 
-
     ////////==========================FILTER METHODS==========================================////////////////////////
 
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        new LoadDataTask().execute();
+    }
 }

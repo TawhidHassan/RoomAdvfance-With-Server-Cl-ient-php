@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHol
         ImageView genderImage=holder.genderImage;
         ImageView callImage=holder.callImage;
         Button title_btn=holder.title_btn;
+        LinearLayout studen_card=holder.card_student;
 
         tv_rolN0.setText(dataset.get(position).rollno+"");
         tv_name.setText(dataset.get(position).student_name);
@@ -84,6 +86,22 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHol
             Toast.makeText(context, "Number is invalide", Toast.LENGTH_SHORT).show();
         }
 
+        studen_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int rollNo=dataset.get(position).rollno;
+                String studenName=dataset.get(position).student_name;
+                String contact=dataset.get(position).contanctno;
+                String gender=dataset.get(position).gender;
+//                Toast.makeText(context, rollNo+"", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(context,StudentDetailsActivity.class);
+                intent.putExtra("rollNo",rollNo);
+                intent.putExtra("studen_name",studenName);
+                intent.putExtra("contactNo",contact);
+                intent.putExtra("gender",gender);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -98,6 +116,7 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHol
         TextView tv_rolN0,tv_name,tv_contactNo;
         ImageView genderImage,callImage;
         Button title_btn;
+        LinearLayout card_student;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -108,6 +127,7 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.MyViewHol
             genderImage=itemView.findViewById(R.id.img_genderId);
             callImage=itemView.findViewById(R.id.img_call);
             title_btn=itemView.findViewById(R.id.btn_title);
+            card_student=itemView.findViewById(R.id.card_studentId);
 
         }
     }
