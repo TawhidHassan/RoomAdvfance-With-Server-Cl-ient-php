@@ -19,7 +19,7 @@ public interface StudentDAO {
 
 
     @Delete
-    void delete(Student student);
+    void deleteTask(Student student);
 
     @Query("select * from student order by rollno asc")
     List<Student> getAll();

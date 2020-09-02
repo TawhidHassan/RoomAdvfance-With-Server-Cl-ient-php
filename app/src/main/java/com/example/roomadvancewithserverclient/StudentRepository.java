@@ -65,4 +65,20 @@ public class StudentRepository {
     }
 
     //================Update Data Task end====================//
+    //
+    //
+    // ================Delete Data Task start====================//
+
+    public void DeleteTask(final Student student){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                studentDatabase.studentDAO().deleteTask(student);
+                return null;
+            }
+        }.execute();
+    }
+
+    //================Delete Data Task end====================//
 }
