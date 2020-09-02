@@ -25,6 +25,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View" />
+
+        <Button
+            android:id="@+id/btnSyncId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sync data" />
     </LinearLayout>
 
 

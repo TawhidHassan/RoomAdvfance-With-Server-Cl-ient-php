@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button insertBtn, viewBtn;
+    Button insertBtn, viewBtn,btnSync;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         insertBtn=findViewById(R.id.inserbtnId);
         viewBtn=findViewById(R.id.viewbtnId);
+        btnSync=findViewById(R.id.btnSyncId);
 
         insertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,ViewActivity.class);
                 startActivity(intent);
+            }
+        });
+        btnSync.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Sync_students sync_students=new Sync_students(MainActivity.this);
             }
         });
 

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RoomAdvance With Server Client</string>
+    <string name="current_ip">192.168.56.1</string>
+    <string name="ws_get_all_students">/Student%20server/ws_get_all_students.php</string>
 </resources>
